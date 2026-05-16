@@ -2,12 +2,13 @@ import { useState, useEffect } from 'react'
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
 import {
   Plus, Pencil, Trash2, LayoutGrid,
-  BedDouble, Users, Wrench, CheckCircle2, Layers,
+  BedDouble, Users, Wrench, CheckCircle2, Layers, Building2,
 } from 'lucide-react'
 import toast from 'react-hot-toast'
 import { floorsService, roomsService } from '../lib/database'
 import { useProperty } from '../context/PropertyContext'
 import { useAuth } from '../context/AuthContext'
+import { useNavigate } from 'react-router-dom'
 import TopBar from '../components/layout/TopBar'
 import Button from '../components/ui/Button'
 import Modal from '../components/ui/Modal'
@@ -29,6 +30,7 @@ const FILTER_CONFIG = [
 export default function PropertyDetail() {
   const { activePropertyId, activeProperty } = useProperty()
   const { user } = useAuth()
+  const navigate = useNavigate()
   const canEdit = ['admin', 'manager'].includes(user?.role)
   const qc = useQueryClient()
 
@@ -95,7 +97,14 @@ export default function PropertyDetail() {
 
   return (
     <div className="flex flex-col min-h-full">
-      <TopBar title={`ผังห้อง — ${activeProperty?.name || ''}`} />
+      <TopBar
+        title={`ผังห้อง — ${activeProperty?.name || ''}`}
+        actions={canEdit && (
+          <Button variant="outline" size="sm" onClick={() => navigate('/properties')}>
+            <Building2 size={14} /> จัดการที่พัก
+          </Button>
+        )}
+      />
 
       <div className="p-4 sm:p-6 space-y-5">
 

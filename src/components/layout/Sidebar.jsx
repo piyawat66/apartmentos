@@ -14,7 +14,6 @@ const navItems = [
   { to: '/guests',       icon: Users,           label: 'ผู้เช่า',           roles: ['admin', 'manager', 'staff'] },
   { to: '/finance',      icon: DollarSign,      label: 'การเงิน',           roles: ['admin', 'manager'] },
   { to: '/rooms',        icon: BedDouble,       label: 'ผังห้อง',           roles: ['admin', 'manager', 'staff'] },
-  { to: '/properties',   icon: Building2,       label: 'จัดการที่พัก',      roles: ['admin', 'manager'] },
   { to: '/bookings',     icon: Calendar,        label: 'จองรายวัน',         roles: ['admin', 'manager', 'staff'] },
   { to: '/housekeeping', icon: Sparkles,        label: 'แม่บ้าน',            roles: ['admin', 'manager', 'staff', 'housekeeper'] },
   { to: '/maintenance',  icon: Wrench,          label: 'แจ้งซ่อม',           roles: ['admin', 'manager', 'staff'] },

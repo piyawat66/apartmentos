@@ -3,7 +3,7 @@ import { formatDateTH } from '../../utils/dateUtils'
 import { useFontSize } from '../../context/FontSizeContext'
 import { useTheme } from '../../context/ThemeContext'
 
-export default function TopBar({ title }) {
+export default function TopBar({ title, actions }) {
   const today = formatDateTH(new Date().toISOString())
   const { decrease, increase, reset, canDecrease, canIncrease } = useFontSize()
   const { isDark, toggle } = useTheme()
@@ -13,6 +13,7 @@ export default function TopBar({ title }) {
       <h1 className="text-base font-semibold text-gray-800 truncate">{title}</h1>
 
       <div className="flex items-center gap-2 sm:gap-3">
+        {actions}
         {/* Font size controls */}
         <div className="flex items-center gap-0.5 bg-gray-100 rounded-lg p-1">
           <button onClick={decrease} disabled={!canDecrease} title="ลดขนาดตัวอักษร"
